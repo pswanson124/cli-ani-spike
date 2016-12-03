@@ -1,0 +1,65 @@
+.grid {
+    /*ddisplay:flex;
+    dflex-direction: column;*/
+    width:100%;
+    overflow-x:auto;
+}
+
+.gr-body    {
+    max-height: 400px;
+    height:400px;
+    /*overflow-y: scroll;*/
+}
+
+.gr-row    {
+    display: flex;
+    flex-direction: row;
+}
+
+.gr-row.title {
+    position: sticky;
+}
+
+.cell {
+    lwidth:100px;
+    aheight:100px;
+    border:1px solid black;
+    flex-grow:1;
+    flex-basis: auto;
+    align-items: stretch;
+}
+
+.title  {
+    font-weight: 700;
+}
+
+
+/*
+
+#transparentScrollbarDiv::-webkit-scrollbar {
+    width: inherit;
+}
+
+/* this targets the default scrollbar (compulsory) */
+/*
+#transparentScrollbarDiv::-webkit-scrollbar-track {
+    background-color: transparent;
+}*/
+
+/* the new scrollbar will have a flat appearance with the set background color */
+/*
+#transparentScrollbarDiv::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}*/
+
+/* this will style the thumb, ignoring the track */
+/*
+#transparentScrollbarDiv::-webkit-scrollbar-button {
+    background-color: transparent;
+}*/
+
+/* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+
+/*#transparentScrollbarDiv::-webkit-scrollbar-corner {
+    background-color: transparent;
+}*/

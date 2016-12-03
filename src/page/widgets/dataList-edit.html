@@ -1,0 +1,57 @@
+<template>
+   <section>
+      <div class="col-sm-6 form-group">
+         <label>List Name:</label>
+         <input class="form-control" value.bind="content.listName"/>
+      </div>
+      <div class="col-sm-6 form-group">
+         <label>Page Size:</label>
+         <input class="form-control" value.bind="content.pageSize"/>
+      </div>
+      <div class="col-sm-12 form-group">
+         <label>Filter:</label>
+         <input class="form-control" value.bind="content.filter"/>
+      </div>
+      <div class="col-sm-9 form-group">
+         <label>Output Columns:</label>
+         <div repeat.for="column of content.outputCols" class="row">
+            <div class="col-sm-4">
+               <a click.trigger="removeItem(column)">
+                  <i class="fa fa-trash-o"></i>
+               </a>
+               ${column.name}
+            </div>
+            <div class="col-sm-5">
+               <input class="form-control" value.bind="column.title"/>
+            </div>
+            <div class="col-sm-2">
+               <input class="form-control" value.bind="column.size"/>
+            </div>
+         </div>
+      </div>
+      <div class="col-sm-3 form-group" style="border-left:solid 1px #aaa;">
+         <label>Columns</label>
+         <div class="row">
+            <div class="col-sm-4">
+               <a click.trigger="addItem({name:'id'})">
+                  <i class="fa fa-plus-square-o"></i>
+               </a>
+            </div>
+            <div class="col-sm-8">id</div>
+         </div>
+         <div repeat.for="field of listDefinition" class="row">
+            <div class="col-sm-4"><a click.trigger="addItem(field)">
+               <a click.trigger="addItem(field)">
+                  <i class="fa fa-plus-square-o"></i>
+               </a>
+            </div>
+            <div class="col-sm-8">${field.name}</div>
+         </div>
+
+      </div>
+      <div class="col-sm-12 form-group">
+         <label>Template:</label>
+         <textarea rows="10" class="form-control" value.bind="content.defiantTemplate"></textarea>
+      </div>
+   </section>
+</template>

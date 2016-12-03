@@ -1,0 +1,20 @@
+<template>
+   <section class="acol-sm-12 au-animate">
+      <h2>${title}</h2>
+      <div class="col-sm-12">
+        <a route-href="route: listView; params.bind: {name: list.name, restoreLast:true}">
+          Back to List
+        </a>
+      </div>
+      <div class="col-sm-12">
+         <compose compose.ref="control" view-model="list/editControl" model.bind="listEdit"></compose>
+      </div>
+      <div class="col-sm-12 pad-t">
+        <div class="col-sm-8 pad-t">
+          <button click.trigger="updateData()">Save</button>
+          <button click.trigger="deleteData()">Delete</button>
+          <div class="pull-right">[${listEdit.item.id}]</div>
+        </div>
+      </div>
+   </div>
+</template>

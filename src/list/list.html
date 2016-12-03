@@ -1,0 +1,32 @@
+<template>
+  <section class="au-animate">
+    <h2>${name}</h2>
+    <div class=row>
+      <div class="col-sm-8 pad-b">
+        <a href.bind="firstPageLink">First Page</a> |
+        <a href.bind="prevPageLink">Previous Page</a> |
+        <a href.bind="nextPageLink">Next Page</a>
+      </div>
+      <div class="col-sm-4 pad-b">
+        Current Page: ${page}
+        <a class='pull-right' href.bind="addItemLink">
+          <i class="fa fa-plus-square" aria-hidden="true"></i>
+          Add Record
+        </a>
+      </div>
+    </div>
+    <div class="col-sm-12" style="overflow:auto;max-height:500px;">
+      <compose view-model="list/listControl" model.bind="listDefinition"></compose>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 pad-t">
+        <a href.bind="firstPageLink">First Page</a> |
+        <a href.bind="prevPageLink">Previous Page</a> |
+        <a href.bind="nextPageLink">Next Page</a>
+      </div>
+      <div class="col-sm-4 pad-t">
+        Current Page: ${page}
+      </div>
+    </div>
+  </section>
+</template>

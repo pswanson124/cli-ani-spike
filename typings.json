@@ -1,0 +1,15 @@
+{
+  "name": "ani",
+  "dependencies": {},
+  "globalDevDependencies": {
+    "angular-protractor": "registry:dt/angular-protractor#1.5.0+20160425143459",
+    "jasmine": "registry:dt/jasmine#2.2.0+20160505161446",
+    "node": "registry:dt/node",
+    "selenium-webdriver": "registry:dt/selenium-webdriver#2.44.0+20160317120654"
+  },
+  "globalDependencies": {
+    "jquery": "registry:dt/jquery#1.10.0+20160908203239",
+    "nprogress": "registry:dt/nprogress#0.0.0+20160316155526",
+    "toastr": "registry:dt/toastr#2.1.1+20160510010435"
+  }
+}

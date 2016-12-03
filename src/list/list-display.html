@@ -1,0 +1,10 @@
+<template>
+  <section class="au-animate">
+    <h2>${heading}</h2>
+    <div class="row" repeat.for="item of items">
+      <a route-href=" route: listView; params.bind: {name:item.name}" class="col-sm-2">
+        ${item.name}
+      </a>
+    </div>
+  </section>
+</template>

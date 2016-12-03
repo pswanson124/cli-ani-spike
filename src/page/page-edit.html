@@ -1,0 +1,82 @@
+<template>
+   <div class="row">
+      <div class="col-sm-12">
+         <div class=" pull-right">
+            <button click.trigger="toggleEditPage()">
+               <i class="fa fa-pencil-square-o"></i>
+            </button>
+            <button click.trigger="savePage()">
+               <i class="fa fa-floppy-o"></i>
+            </button>
+         </div>
+      </div>
+   </div>
+
+   <div class="row">
+     <!-- Area sizes -->
+     <div class="col-sm-6">
+        <h4>Sizes</h4>
+        <div class="row">
+           <div class="form-group col-sm-3">
+              <label>left</label>
+              <input class="form-control" value.bind="page.sizes.left"/>
+           </div>
+           <div class="form-group col-sm-6">
+              <label>middle</label>
+              <input class="form-control" value.bind="page.sizes.middle"/>
+           </div>
+           <div class="form-group col-sm-3">
+              <label>right</label>
+              <input class="form-control" value.bind="page.sizes.right"/>
+           </div>
+        </div>
+     </div>
+
+     <!-- Add Widget Section -->
+     <div class="col-sm-6" style="border-left:solid 1px #aaa">
+        <h4>Add</h4>
+        <div class="row">
+           <label class="col-sm-6">Type</label>
+           <label class="col-sm-4">Where</label>
+           <label class="col-sm-1">Add</label>
+        </div>
+        <div class="row">
+           <div class="col-sm-6">
+              <select class="form-control" value.bind="newItem.type">
+                 <option repeat.for="t of widgetTypes" value.bind="t.t">${t.name}</option>
+              </select>
+           </div>
+           <div class="col-sm-4">
+              <select class="form-control" value.bind="newItem.area">
+                 <option repeat.for="area of pageAreas" value.bind="area.name">${area.name}</option>
+              </select>
+           </div>
+           <div class="col-sm-1">
+              <button class="btn btn-default" click.trigger="addWidget()">Add</button>
+           </div>
+        </div>
+     </div>
+  </div>
+
+  <div class="row">
+     <!-- Widget Edit -->
+     <div class="col-sm-12" if.bind="selectedWidget" style="border-top:1px solid #aaa;padding-top:15px;">
+        <div class="row">
+           <div class="form-group col-sm-6">
+              <label>Name:</label>
+              <input class="form-control" value.bind="selectedWidget.name"/>
+           </div>
+           <div class="form-group col-sm-6">
+              <label>Chrome:</label>
+              <select class="form-control" value.bind="selectedWidget.chrome">
+                 <option value='none'>None</option>
+                 <option value='border'>Border</option>
+                 <option value=borderTitle>Border and Title</option>
+                 <option value=title>Title</option>
+              </select>
+           </div>
+           <compose view-model="./widgets/${selectedWidget.t}-edit" model.bind="selectedWidget"></compose>
+        </div>
+     </div>
+  </div>
+</template>

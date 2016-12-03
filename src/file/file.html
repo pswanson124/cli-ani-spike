@@ -1,0 +1,16 @@
+<template>
+   <require from="./blob-to-url"></require>
+   <require from="./file-list-to-array"></require>
+
+<p>File</p>
+<input type="file" id="files" name="files[]" multiple files.bind="selectedFiles" />
+<button click.trigger="sendFiles()">Submit Files</button>
+
+  <ul>
+    <li repeat.for="file of selectedFiles | fileListToArray">
+      <h1>${file.name}: ${file.type} ${file.size / 1000} kb</h1>
+      <img src.bind="file | blobToUrl"><img>
+      Last Modified: ${file.lastModifiedDate}
+    </li>
+  </ul>
+</template>

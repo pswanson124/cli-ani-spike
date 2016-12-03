@@ -1,0 +1,30 @@
+<template>
+   <section class="au-animate">
+      <h2>${heading}</h2>
+   </section>
+   <div class="row">
+      <div class="col-sm-6">
+         <button click.trigger="nextPage()">Next</button>
+      </div>
+   </div>
+   <div class="row" repeat.for="item of items">
+      <a href="#/list/${name}/edit/${item.id}" class="col-sm-2">
+         ${item.firstName}
+      </a>
+      <div class="col-sm-2">
+         ${item.lastName}
+      </div>
+      <div class="col-sm-2">
+         ${item.email}
+      </div>
+      <div class="col-sm-2">
+         ${item.email}<br>
+         ${item.field2}<br>
+         ${item.lastName}
+      </div>
+      <div class="col-sm-4">
+         ${item.field4}
+      </div>
+
+   </div>
+</template>

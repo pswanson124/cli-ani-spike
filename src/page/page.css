@@ -1,0 +1,41 @@
+section#pageSection.edit div.myPointPnl {
+    border: 1px solid black;
+    box-shadow: 5px 5px 2px #888888;
+    border-radius: 5px;
+}
+
+div.chromeTitle {
+    display:none;
+}
+
+div.myPointPnl.borderTitle  div.chromeTitle, div.myPointPnl.title  div.chromeTitle{
+    display:block;
+    padding-bottom: 10px;
+    font-weight: bolder;
+}
+
+div.myPointPnl.border, div.myPointPnl.borderTitle {
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+section#pageSection div.myPointPnl {
+    padding: 8px;
+    float:left;
+    width:calc(100% - 10px);
+    margin : 5px;
+}
+
+.drop-target {
+    margin-top : 10px;
+    padding-top: 15px;
+    padding-bottom: 35px;
+    border-top: solid 1px #eee;
+    border-bottom: solid 1px #eee;
+}
+
+.drop-target::after {
+    text-align: center;
+    content: " - Drop Zone - ";
+    color:#eee;
+}

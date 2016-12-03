@@ -1,0 +1,97 @@
+<template>
+  <require from="./converters/excludeDeleted"></require>
+
+  <section class="au-animate">
+    <h2>${heading}</h2>
+    <div class="row">
+      <!-- Table List -->
+      <div class="col-sm-4" if.bind="!showNewList">
+        <h3>Lists</h3>
+        <div class="row" repeat.for="item of items">
+           <a class="col-sm-12" click.trigger="selectItem(item)">
+              ${item.name}
+           </a>
+        </div>
+        <div class="row pad-t">
+          <div class="col-sm-12">
+            <button click.delegate="addList()" class="btn btn-default">Add List</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4" if.bind="showNewList">
+        <div class="col-sm-12">
+          <div class="pad-t">
+            <p class="pad-t">Enter the new list name</p>
+          </div>
+          <div class="pad-t form-group">
+            <label>Name:</label>
+            <input class="form-control" value.bind="newList.name"/>
+          </div>
+          <div class="pad-t">
+            <button class="btn btn-primary" click.delegate="saveNewList()">Save</button>
+            <button class="btn btn-default" click.delegate="cancelAddList()">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Field List -->
+      <div class="col-sm-8 au-animate" if.bind="!showNewList">
+        <div class="row" if.bind="!showEdit && (fieldDefinition.length>0 || selectedItem)">
+          <h3>Fields for ${selectedItem.name}</h3>
+           <a class="col-sm-12" click.trigger="selectField(field)"
+              repeat.for="field of fieldDefinition | excludeDeleted">
+              ${field.display || field.name}
+           </a>
+           <div class="col-sm-12" style="padding-top:15px;">
+             <button class="btn btn-default" click.trigger="addListDefinition()">Add</button>
+             <button class="btn btn-default" click.trigger="saveListDefinition()">Save</button>
+             <button class="btn btn-default" click.trigger="cancel()">Cancel</button>
+           </div>
+        </div>
+
+        <!-- Edit List Field-->
+        <div class="row" if.bind="showEdit">
+          <div class="col-sm-12">
+            <h3>${selectedField.name}</h3>
+            <div class="form-group">
+              <label>Name:</label>
+              <input class="form-control" value.bind="selectedField.name"/>
+            </div>
+            <div class="form-group">
+              <label>Display:</label>
+              <input class="form-control" value.bind="selectedField.display"/>
+            </div>
+            <div class="form-group">
+              <label>Description:</label>
+              <textarea class="form-control" value.bind="selectedField.description" rows="6"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Type:</label>
+              <select class="form-control" value.bind="selectedField.datatype">
+                <option value="STRING">Single Line</option>
+                <option value="M-STRING">Multi Line</option>
+                <option value="INTEGER">Integer</option>
+                <option value="FLOAT">Float</option>
+                <option value="CHOICE">Choice</option>
+                <option value="DATE">Date</option>
+                <option value="BOOL">Checkbox</option>
+              </select>
+            </div>
+            <div if.bind="selectedField.datatype==='M-STRING'" class="form-group">
+              <label>Rows:</label>
+              <input class="form-control" value.bind="selectedField.rows"/>
+            </div>
+            <div if.bind="selectedField.datatype==='CHOICE'" class="form-group">
+              <label>Options:</label>
+              <textarea class="form-control" value.bind="selectedField.fieldoptions" rows="6"></textarea>
+            </div>
+            <div style="padding-top:15px;">
+              <button class="btn btn-default" click.trigger="backToFields()">Back</button>
+              <button class="btn btn-default" click.trigger="deleteField(selectedField)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

@@ -1,0 +1,62 @@
+<template>
+  <require from="./no-selection.css"></require>
+  <div class="no-selection text-center">
+    <h2>${message}</h2>
+  </div>
+
+  <div interact-draggable.bind="{ inertia: false }" interact-dragmove.delegate="moveElement($event)">
+    Test area
+  </div>
+
+  <div class="col-sm-12">
+    <!--<dragula-and-drop drop-fn.call="drop(item, target, source, sibling, itemVM, siblingVM)"></dragula-and-drop>-->
+    <table class="table table-striped hidden">
+      <thead>
+        <tr>
+          <th>Field 1</th>
+          <th>Field 2</th>
+          <th>Field 3</th>
+        </tr>
+        <tr>
+          <th interact-draggable interact-dragenter.delegate="enter($event)" class="drop-target"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="drag-source" repeat.for="row of data">
+          <td>${row.field1}</td>
+          <td>${row.field2}</td>
+          <td>${row.field3}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-sm-12">
+    <input value.bind="col1width"/>
+    <input value.bind="col2width"/>
+    <input value.bind="col3width"/>
+    <input value.bind="col4width"/>
+    <input value.bind="col5width"/>
+
+    <div class="grid">
+      <div class="gr-row title" id="transparentScrollbarDiv">
+        <div class="cell" style="width:${col1width}px;min-width:${col1width}px">1title1</div>
+        <div class="cell" style="width:${col2width}px;min-width:${col2width}px">1title2</div>
+        <div class="cell" style="width:${col3width}px;min-width:${col3width}px">1title3</div>
+        <div class="cell" style="width:${col4width}px;min-width:${col4width}px">1title4</div>
+        <div class="cell" style="width:${col5width}px;min-width:${col5width}px">1title5</div>
+      </div>
+      <div class="gr-body">
+        <div repeat.for="row of data" class="gr-row">
+          <div class="cell" style="width:${col1width}px;min-width:${col1width}px">${row.field1}</div>
+          <div class="cell" style="width:${col2width}px;min-width:${col2width}px">${row.field2}</div>
+          <div class="cell" style="width:${col3width}px;min-width:${col3width}px">${row.field3}</div>
+          <div class="cell" style="width:${col4width}px;min-width:${col4width}px">${row.field4}</div>
+          <div class="cell" style="width:${col5width}px;min-width:${col5width}px">${row.field5}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</template>
